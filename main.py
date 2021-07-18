@@ -1,5 +1,4 @@
-# on mom's laptop without starting obs it takes 30 seconds, with - 36.3
-
+# on mom's laptop without starting obs it takes ~31 seconds, with - ~37
 import pyautogui
 import os
 import shutil
@@ -15,6 +14,18 @@ def findCoords(pathh):
         print("Not there yet!")
     point = pyautogui.center(loc)
     return point
+
+done = 0
+interval = ""
+while done == 0:
+    interval = input("Do you want a set interval? (y/n): ")
+    interval = interval.lower()
+    if interval == "y" or interval == "n":
+        done = 1
+    else:
+        print("That's not y/n!")
+
+
 
 # getting le' paths
 scriptPath = os.path.dirname(os.path.abspath(__file__))
