@@ -25,7 +25,16 @@ while done == 0:
     else:
         print("That's not y/n!")
 
-
+done = 0
+customInterv = 0
+while done == 0:
+    if interval == "y":
+        try:
+            customInterv = int(input("Enter the interval: "))
+        except ValueError:
+            print("That's not a number!")
+        finally:
+            done = 1
 
 # getting le' paths
 scriptPath = os.path.dirname(os.path.abspath(__file__))
@@ -135,7 +144,10 @@ writePoint = findCoords(writingLocatePath)
 pyautogui.click(writePoint.x+50, writePoint.y)
 sleep(0.1)
 pyautogui.hotkey('ctrl', 'a')
-interv = 3 / 10 # duration / len(text)
+if interval == "n": # deciding the interval and stuff
+    interv = customInterv
+else:
+    interv = duration / len(text)
 pyautogui.typewrite(text, interval=interv)
 
 # closing the text editing box
